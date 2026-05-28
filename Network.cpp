@@ -164,6 +164,7 @@ bool Network::changeAP(const uint8_t *bssid, const int32_t channel) {
   this->_connecting = true;
   this->connectStart = millis();
   WiFi.begin(settings.WIFI.ssid, settings.WIFI.passphrase, channel, bssid);
+  esp_wifi_set_max_tx_power(8); // Réduit à 8dBm pour ESP32-S3 N16R8 (antenne défaillante)
   this->connectStart = millis();
   return false;
 }
@@ -470,6 +471,7 @@ bool Network::connectWiFi(const uint8_t *bssid, const int32_t channel) {
     Serial.println("WiFi begin...");
     this->_connecting = true;
     WiFi.begin(settings.WIFI.ssid, settings.WIFI.passphrase, channel, bssid);
+    esp_wifi_set_max_tx_power(8); // Réduit à 8dBm pour ESP32-S3 N16R8 (antenne défaillante)
     this->connectStart = millis();
   }
   else if(settings.WIFI.ssid[0] != '\0') {
@@ -505,10 +507,12 @@ bool Network::connectWiFi(const uint8_t *bssid, const int32_t channel) {
     if(!settings.WIFI.hidden && this->getStrongestAP(settings.WIFI.ssid, _bssid, &_channel)) {
       Serial.printf("Found strongest AP %02X:%02X:%02X:%02X:%02X:%02X CH:%d\n", _bssid[0], _bssid[1], _bssid[2], _bssid[3], _bssid[4], _bssid[5], _channel);
       WiFi.begin(settings.WIFI.ssid, settings.WIFI.passphrase, _channel, _bssid);
+      esp_wifi_set_max_tx_power(8);
     }
     else
       // If the user has the hidden flag set just connect to whatever the AP gives us.
       WiFi.begin(settings.WIFI.ssid, settings.WIFI.passphrase);
+      esp_wifi_set_max_tx_power(8);
   }
   this->connectStart = millis();
   return true;
