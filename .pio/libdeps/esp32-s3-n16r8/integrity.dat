@@ -1,0 +1,8 @@
+lsatan/SmartRC-CC1101-Driver-Lib@2.5.7
+bblanchon/ArduinoJson@6.21.3
+links2004/WebSockets@^2.4.0
+me-no-dev/AsyncTCP@1.1.1
+me-no-dev/ESPAsyncWebServer@^3.0.0
+LittleFS
+ESP32Async/AsyncTCP@^3.3.2
+knolleary/PubSubClient@2.8.0
