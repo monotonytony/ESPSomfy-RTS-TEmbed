@@ -1,6 +1,4 @@
 #include <WiFi.h>
-#include <esp_wifi.h>
-#include <esp_wifi.h>
 #include <LittleFS.h>
 #include <esp_task_wdt.h>
 #include "ConfigSettings.h"
@@ -31,9 +29,7 @@ void setup() {
   else Serial.println("Error mounting file system");
   settings.begin();
   if(WiFi.status() == WL_CONNECTED) WiFi.disconnect(true);
-  esp_wifi_set_max_tx_power(10); // Réduit de 20dBm à 10dBm pour les modules S3 avec antenne défaillante
   delay(10);
-  esp_wifi_set_max_tx_power(10); // Réduit WiFi TX power pour ESP32-S3 N16R8
   Serial.println();
   webServer.startup();
   webServer.begin();
