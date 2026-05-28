@@ -1,0 +1,27 @@
+{
+  "build": {
+    "arduino": { "partitions": "default_16MB.csv" },
+    "core": "esp32",
+    "extra_flags": "-DARDUINO_USB_CDC_ON_BOOT=1 -DBOARD_HAS_PSRAM=1",
+    "f_cpu": "240000000L",
+    "f_flash": "80000000L",
+    "flash_mode": "qio",
+    "mcu": "esp32s3",
+    "variant": "esp32s3"
+  },
+  "connectivity": ["wifi"],
+  "debug": { "default_tool": "esp-builtin", "onboard_tools": ["esp-builtin"] },
+  "frameworks": ["arduino", "espidf"],
+  "name": "LilyGO T-Embed CC1101",
+  "upload": {
+    "flash_size": "16MB",
+    "maximum_ram_size": 327680,
+    "maximum_size": 16777216,
+    "require_upload_port": true,
+    "speed": 921600,
+    "use_1200bps_touch": true,
+    "wait_for_upload_port": true
+  },
+  "url": "https://github.com/Xinyuan-LilyGO/T-Embed-CC1101",
+  "vendor": "LilyGO"
+}
