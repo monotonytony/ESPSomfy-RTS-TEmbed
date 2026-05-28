@@ -1,5 +1,13 @@
 #ifndef SOMFY_H
 #define SOMFY_H
+
+// LilyGO T-Embed CC1101 pin definitions
+#ifdef T_EMBED_CC1101
+#define T_EMBED_PWR_EN 15
+#define T_EMBED_SW0 48
+#define T_EMBED_SW1 47
+#endif
+
 #include "ConfigSettings.h"
 #include "WResp.h"
 

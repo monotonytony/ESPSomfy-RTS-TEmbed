@@ -4958,6 +4958,16 @@ void transceiver_config_t::load() {
     //this->printBuffer = somfy.transceiver.printBuffer;
 }
 void transceiver_config_t::apply() {
+    // LilyGO T-Embed CC1101 initialization
+    #ifdef T_EMBED_CC1101
+    pinMode(T_EMBED_PWR_EN, OUTPUT);
+    digitalWrite(T_EMBED_PWR_EN, HIGH);      // Power on CC1101
+    delay(10);
+    pinMode(T_EMBED_SW0, OUTPUT);
+    pinMode(T_EMBED_SW1, OUTPUT);
+    digitalWrite(T_EMBED_SW0, HIGH);          // SW0=HIGH, SW1=LOW -> antenna to CC1101
+    digitalWrite(T_EMBED_SW1, LOW);
+    #endif
     somfy.transceiver.disableReceive();
     bit_length = this->type;    
     if(this->enabled) {
