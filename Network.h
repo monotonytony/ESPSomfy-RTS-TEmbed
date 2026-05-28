@@ -1,3 +1,4 @@
+#include <esp_wifi.h>
 #include <Arduino.h>
 
 #ifndef Network_h
